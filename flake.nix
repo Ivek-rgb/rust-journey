@@ -18,10 +18,11 @@
   {
     devShells.x86_64-linux.default = pkgs.mkShell {
 
-      packages = with pkgs; 
+      packages = with pkgs;
       [
-        rust-bin.stable.latest.default
-        rust-analyzer
+        (rust-bin.stable.latest.default.override {
+          extensions = [ "rust-src" "rust-analyzer" ];
+        })
         pkg-config
         openssl
         just
